@@ -1,5 +1,5 @@
 from unittest import TestCase
-from day_02 import day_02, parse_2d
+from day_02 import day_02, day_02_part2, parse_2d
 from textwrap import dedent
 
 try:
@@ -15,6 +15,13 @@ class TestDay02(TestCase):
                    (2, 4, 6, 8))
 
         self.assertEqual(18, day_02(example))
+
+    def test_part_2(self):
+        example = ((5, 9, 2, 8),
+                   (9, 4, 7, 3),
+                   (3, 8, 6, 5))
+
+        self.assertEqual(9, day_02_part2(example));
 
     def test_the_boring_parts(self):
         example = dedent("""\

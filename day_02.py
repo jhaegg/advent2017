@@ -1,6 +1,8 @@
 import sys
 import re
 
+from itertools import permutations
+
 try:
     from functools import reduce
 except ImportError:
@@ -15,10 +17,17 @@ def day_02(spreadsheet):
                for row in spreadsheet))
 
 
+def day_02_part2(spreadsheet):
+    return sum(next(a / b for a, b in permutations(row, 2) if a % b == 0 ) for row in spreadsheet)
+
+
 def parse_2d(f):
     for line in f:
         yield (int(e) for e in filter(lambda e: e != '', re.split("\s+", line)))
 
 
 if __name__ == '__main__':
-    print(day_02(parse_2d(sys.stdin)))
+    if sys.argv[1] == "1":
+        print(day_02(parse_2d(sys.stdin)))
+    else:
+        print(day_02_part2(parse_2d(sys.stdin)))
